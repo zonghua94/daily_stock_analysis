@@ -17,6 +17,10 @@ on:
           - full          # 完整分析（股票+大盘）
           - market-only   # 仅大盘复盘
           - stocks-only   # 仅股票分析
+      stock_codes:
+        description: '指定要分析的股票代码，逗号分隔（覆盖配置文件）'
+        required: true
+        default: '600519'
 
 # 并发控制：同一时间只运行一个分析任务
 concurrency:
@@ -132,7 +136,7 @@ jobs:
           # ==========================================
           # 自选股配置
           # ==========================================
-          STOCK_LIST: ${{ vars.STOCK_LIST || secrets.STOCK_LIST || '600519' }}
+          STOCK_LIST: ${{ github.event.inputs.mode || vars.STOCK_LIST || secrets.STOCK_LIST || '600519' }}
           
           # ==========================================
           # 运行配置 ⬅️ 新增！
