@@ -136,7 +136,7 @@ jobs:
           # ==========================================
           # 自选股配置
           # ==========================================
-          STOCK_LIST: ${{ github.event.inputs.mode || vars.STOCK_LIST || secrets.STOCK_LIST || '600519' }}
+          STOCK_LIST: ${{ github.event.inputs.stock_codes || vars.STOCK_LIST || secrets.STOCK_LIST || '600519' }}
           
           # ==========================================
           # 运行配置 ⬅️ 新增！
